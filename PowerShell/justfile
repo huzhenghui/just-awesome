@@ -1,4 +1,5 @@
 set shell := ['pwsh', '-c']
 
+# It works in Mac OS X and Windows
 hello-world:
     Write-Host 'Hello, World!'
