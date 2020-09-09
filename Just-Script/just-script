@@ -1,0 +1,4 @@
+#!/usr/bin/env just --justfile
+
+hello-world:
+    echo Hello World from Script
