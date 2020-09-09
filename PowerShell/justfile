@@ -1,0 +1,4 @@
+set shell := ['pwsh', '-c']
+
+hello-world:
+    Write-Host 'Hello, World!'
