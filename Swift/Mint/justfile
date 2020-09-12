@@ -1,0 +1,28 @@
+_: just-choose
+
+just-choose:
+    #!/usr/bin/env sh
+    choose_recipe=$(just --summary | tr ' ' '\n' | /usr/local/opt/choose-gui/bin/choose)
+    echo "Choose Recipe: ${choose_recipe}"
+    just "${choose_recipe}"
+
+just-list:
+    just --list
+
+list:
+    mint list
+
+which-mint:
+    mint which mint
+
+run-mint:
+    mint run mint
+
+install-mint:
+    mint install yonaskolb/mint
+
+help:
+    mint help
+
+version:
+    mint version
