@@ -1,0 +1,3 @@
+[submodule "Swift/Mint/Mint-Hello-World"]
+	path = Swift/Mint/Mint-Hello-World
+	url = https://github.com/huzhenghui/Mint-Hello-World
