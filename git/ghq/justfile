@@ -9,20 +9,23 @@ just-choose:
 just-list:
     just --list
 
-brew-home-ghq:
-    brew home ghq
-
 ghq-root:
     ghq root
 
 ghq-list:
     ghq list
 
-ghq-list-choose-get:
+ghq-list-choose-get-look:
     #!/usr/bin/env sh
     choose_repository=$(ghq list | /usr/local/opt/choose-gui/bin/choose)
     echo "Choose Repository : ${choose_repository}"
     ghq get --look "${choose_repository}"
+
+ghq-list-choose-get-update:
+    #!/usr/bin/env sh
+    choose_repository=$(ghq list | /usr/local/opt/choose-gui/bin/choose)
+    echo "Choose Repository : ${choose_repository}"
+    ghq get --update "${choose_repository}"
 
 ghq-list-full-path:
     ghq list --full-path
@@ -41,3 +44,9 @@ ghq-get-look-huzhenghui-just-awesome:
 
 ghq-get-update-huzhenghui-just-awesome:
     ghq get --update https://github.com/huzhenghui/just-awesome
+
+brew-info-ghq:
+    brew info ghq
+
+brew-home-ghq:
+    brew home ghq
