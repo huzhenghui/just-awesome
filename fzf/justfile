@@ -1,12 +1,6 @@
-_: just-choose
+_: just-fzf
 
-just-choose:
-    #!/usr/bin/env sh
-    choose_recipe=$(just --summary | tr ' ' '\n' | /usr/local/opt/choose-gui/bin/choose)
-    echo "Choose Recipe: ${choose_recipe}"
-    just "${choose_recipe}"
-
-fzf:
+just-fzf:
     #!/usr/bin/env sh
     choose_recipe=$(just --summary | tr ' ' '\n' | fzf)
     echo "Choose Recipe: ${choose_recipe}"
@@ -15,8 +9,8 @@ fzf:
 just-list:
     just --list
 
-choose-gui-help:
-    /usr/local/opt/choose-gui/bin/choose -h
+fzf-help:
+    fzf --help
 
-choose-gui-brew-info:
-    brew info choose-gui
+brew-info-fzf:
+    brew info fzf
