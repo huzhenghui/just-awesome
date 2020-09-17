@@ -9,35 +9,103 @@ just-choose:
 just-list:
     just --list
 
-nef-playground-ios:
-    nef playground --output "./ios-BowPlayground" --name "ios-bow-playground" --platform ios
-
-open-playground-ios:
-    open "./ios-BowPlayground/ios-bow-playground.app"
-
-trash-playground-ios:
-    trash "./ios-BowPlayground/ios-bow-playground.app"
-
-nef-playground-macos:
-    nef playground --output "./macos-BowPlayground" --name "macos-bow-playground" --platform macos
-
-open-playground-macos:
-    open "./macos-BowPlayground/macos-bow-playground.app"
-
-trash-playground-macos:
-    trash "./macos-BowPlayground/macos-bow-playground.app"
-
-open-xcode-playground:
-    open "./xcode-playground/Xcode-Playground.playground"
-
-nef-playground-transform:
-    nef playground --playground "./xcode-playground/Xcode-Playground.playground" --output "./Transform-BowPlayground" --name "transform-bow-playground" --platform macos
-
-open-playground-transform:
-    open "./Transform-BowPlayground/Transform-bow-playground.app"
-
-trash-playground-transform:
-    trash "./Transform-BowPlayground/Transform-bow-playground.app"
+just-evaluate:
+    just --evaluate
 
 nef-help:
     nef --help
+
+markdown_output := "./markdown-output"
+xcode_playground := "./xcode-playground"
+transform_bowplayground := "./Transform-BowPlayground"
+
+# Create ios
+
+ios_bowplayground_dir := "./ios-BowPlayground"
+ios_bowplayground_name := "IosBowPlayground"
+
+# Create ios : 1 : Create by nef
+nef-playground-ios:
+    nef playground --output "{{ios_bowplayground_dir}}" --name "{{ios_bowplayground_name}}" --platform ios
+
+# Create ios : 2 : Open by Xcode
+open-playground-ios:
+    open "{{ios_bowplayground_dir}}/{{ios_bowplayground_name}}.app"
+
+# Create ios : 3 : Compile by nef
+compile-playground-ios:
+    nef compile --project "{{ios_bowplayground_dir}}/{{ios_bowplayground_name}}.app"
+
+# Create ios : 4 : Generate Markdown by nef
+markdown-playground-ios:
+    nef markdown --project "{{ios_bowplayground_dir}}/{{ios_bowplayground_name}}.app" --output "{{markdown_output}}"
+
+# Create ios : clean PlayGround
+trash-playground-ios:
+    trash "{{ios_bowplayground_dir}}/{{ios_bowplayground_name}}.app"
+
+# Create ios : clean Markdown
+trash-playground-ios-markdown:
+    trash "{{markdown_output}}/$(echo {{ios_bowplayground_name}} | tr [A-Z] [a-z])"
+
+# Create macos
+
+macos_bowplayground_dir := "./macos-BowPlayground"
+macos_bowplayground_name := "MacosBowPlayground"
+
+# Create macos : 1 : Create by nef
+nef-playground-macos:
+    nef playground --output "{{macos_bowplayground_dir}}" --name "{{macos_bowplayground_name}}" --platform macos
+
+# Create macos : 2 : Open by Xcode
+open-playground-macos:
+    open "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app"
+
+# Create macos : 3 : Compile by nef
+compile-playground-macos:
+    nef compile --project "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app"
+
+# Create macos : 4 : Generate Markdown by nef
+markdown-playground-macos:
+    nef markdown --project "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app" --output "{{markdown_output}}"
+
+# Create macos : Clean PlayGround
+trash-playground-macos:
+    trash "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app"
+
+# Create macos : Clean Markdown
+trash-playground-macos-markdown:
+    trash "{{markdown_output}}/$(echo {{macos_bowplayground_name}} | tr [A-Z] [a-z])"
+
+# macOS Blank
+
+macos_blank_playground_dir := "macOS-Blank.playground"
+macos_blank_bowplayground_name := "MacosBlank"
+
+# macOS Blank : 1 : Open PlayGround by Xcode
+open-xcode-playground-macOS-Blank:
+    open "{{xcode_playground}}/{{macos_blank_playground_dir}}"
+
+# macOS Blank : 2 : Transform PlayGround by nef
+nef-playground-transform-macOS-Blank:
+    nef playground --playground "{{xcode_playground}}/{{macos_blank_playground_dir}}" --output "./Transform-BowPlayground" --name "{{macos_blank_bowplayground_name}}" --platform macos
+
+# macOS Blank : 3 : Open Transformed PlayGround by Xcode
+open-transformed-playground-macOS-Blank:
+    open "{{transform_bowplayground}}/{{macos_blank_bowplayground_name}}.app"
+
+# macOS Blank : 4 : Compile Transformed PlayGround by nef
+compile-transformed-playground-macOS-Blank:
+    nef compile --project "{{transform_bowplayground}}/{{macos_blank_bowplayground_name}}.app"
+
+# macOS Blank : 5 : Render Markdown for Transformed PlayGround by nef
+markdown-transformed-playground-macOS-Blank:
+    nef markdown --project "{{transform_bowplayground}}/{{macos_blank_bowplayground_name}}.app" --output "{{markdown_output}}"
+
+# macOS Blank : Clean Transformed PlayGround
+trash-transformed-playground-macOS-Blank:
+    trash "{{transform_bowplayground}}/{{macos_blank_bowplayground_name}}.app"
+
+# macOS Blank : Clean Markdown
+trash-transformed-playground-macOS-Blank-markdown:
+    trash "{{markdown_output}}/$(echo {{macos_blank_bowplayground_name}} | tr [A-Z] [a-z])"
