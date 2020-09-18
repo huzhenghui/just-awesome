@@ -113,6 +113,35 @@ trash-transformed-playground-macOS-Blank:
 trash-transformed-playground-macOS-Blank-markdown:
     trash "{{markdown_output}}/$(echo {{macos_blank_bowplayground_name}} | tr [A-Z] [a-z])"
 
+# macOS Game
+
+macos_game_playground_dir := "macOS-Game.playground"
+macos_game_bowplayground_name := "MacosGame"
+
+# macOS Game : 1 : Open PlayGround by Xcode
+open-xcode-playground-macOS-Game:
+    open "{{xcode_playground}}/{{macos_game_playground_dir}}"
+
+# macOS Game : 2 : Transform PlayGround by nef
+nef-playground-transform-macOS-Game:
+    nef playground --playground "{{xcode_playground}}/{{macos_game_playground_dir}}" --output "{{transform_bowplayground}}" --name "{{macos_game_bowplayground_name}}" --platform macos
+
+# macOS Game : 3 : Open Transformed PlayGround by Xcode
+open-transformed-playground-macOS-Game:
+    open "{{transform_bowplayground}}/{{macos_game_bowplayground_name}}.app"
+
+# macOS Game : 4 : Render Markdown for Transformed PlayGround by nef
+markdown-transformed-playground-macOS-Game:
+    nef markdown --project "{{transform_bowplayground}}/{{macos_game_bowplayground_name}}.app" --output "{{markdown_output}}"
+
+# macOS Game : Clean Transformed PlayGround
+trash-transformed-playground-macOS-Game:
+    trash "{{transform_bowplayground}}/{{macos_game_bowplayground_name}}.app"
+
+# macOS Game : Clean Markdown
+trash-transformed-playground-macOS-Game-markdown:
+    trash "{{markdown_output}}/$(echo {{macos_game_bowplayground_name}} | tr [A-Z] [a-z])"
+
 # macOS Map
 
 macos_map_playground_dir := "macOS-Map.playground"
