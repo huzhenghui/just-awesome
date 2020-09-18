@@ -113,6 +113,35 @@ trash-transformed-playground-macOS-Blank:
 trash-transformed-playground-macOS-Blank-markdown:
     trash "{{markdown_output}}/$(echo {{macos_blank_bowplayground_name}} | tr [A-Z] [a-z])"
 
+# macOS Map
+
+macos_map_playground_dir := "macOS-Map.playground"
+macos_map_bowplayground_name := "MacosMap"
+
+# macOS Map : 1 : Open PlayGround by Xcode
+open-xcode-playground-macOS-Map:
+    open "{{xcode_playground}}/{{macos_map_playground_dir}}"
+
+# macOS Map : 2 : Transform PlayGround by nef
+nef-playground-transform-macOS-Map:
+    nef playground --playground "{{xcode_playground}}/{{macos_map_playground_dir}}" --output "{{transform_bowplayground}}" --name "{{macos_map_bowplayground_name}}" --platform macos
+
+# macOS Map : 3 : Open Transformed PlayGround by Xcode
+open-transformed-playground-macOS-Map:
+    open "{{transform_bowplayground}}/{{macos_map_bowplayground_name}}.app"
+
+# macOS Map : 4 : Render Markdown for Transformed PlayGround by nef
+markdown-transformed-playground-macOS-Map:
+    nef markdown --project "{{transform_bowplayground}}/{{macos_map_bowplayground_name}}.app" --output "{{markdown_output}}"
+
+# macOS Map : Clean Transformed PlayGround
+trash-transformed-playground-macOS-Map:
+    trash "{{transform_bowplayground}}/{{macos_map_bowplayground_name}}.app"
+
+# macOS Map : Clean Markdown
+trash-transformed-playground-macOS-Map-markdown:
+    trash "{{markdown_output}}/$(echo {{macos_map_bowplayground_name}} | tr [A-Z] [a-z])"
+
 # macOS Single View
 
 macos_singleview_playground_dir := "macOS-SingleView.playground"
