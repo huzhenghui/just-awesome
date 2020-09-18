@@ -15,6 +15,9 @@ just-evaluate:
 nef-help:
     nef --help
 
+nef-version:
+    nef version
+
 markdown_output := "./markdown-output"
 xcode_playground := "./xcode-playground"
 transform_bowplayground := "./Transform-BowPlayground"
@@ -109,6 +112,35 @@ trash-transformed-playground-macOS-Blank:
 # macOS Blank : Clean Markdown
 trash-transformed-playground-macOS-Blank-markdown:
     trash "{{markdown_output}}/$(echo {{macos_blank_bowplayground_name}} | tr [A-Z] [a-z])"
+
+# macOS Single View
+
+macos_singleview_playground_dir := "macOS-SingleView.playground"
+macos_singleview_bowplayground_name := "MacosSingleView"
+
+# macOS Single View : 1 : Open PlayGround by Xcode
+open-xcode-playground-macOS-SingleView:
+    open "{{xcode_playground}}/{{macos_singleview_playground_dir}}"
+
+# macOS Single View : 2 : Transform PlayGround by nef
+nef-playground-transform-macOS-SingleView:
+    nef playground --playground "{{xcode_playground}}/{{macos_singleview_playground_dir}}" --output "{{transform_bowplayground}}" --name "{{macos_singleview_bowplayground_name}}" --platform macos
+
+# macOS Single View : 3 : Open Transformed PlayGround by Xcode
+open-transformed-playground-macOS-SingleView:
+    open "{{transform_bowplayground}}/{{macos_singleview_bowplayground_name}}.app"
+
+# macOS Single View : 4 : Render Markdown for Transformed PlayGround by nef
+markdown-transformed-playground-macOS-SingleView:
+    nef markdown --project "{{transform_bowplayground}}/{{macos_singleview_bowplayground_name}}.app" --output "{{markdown_output}}"
+
+# macOS Single View : Clean Transformed PlayGround
+trash-transformed-playground-macOS-SingleView:
+    trash "{{transform_bowplayground}}/{{macos_singleview_bowplayground_name}}.app"
+
+# macOS Single View : Clean Markdown
+trash-transformed-playground-macOS-SingleView-markdown:
+    trash "{{markdown_output}}/$(echo {{macos_singleview_bowplayground_name}} | tr [A-Z] [a-z])"
 
 # iOS Blank
 
