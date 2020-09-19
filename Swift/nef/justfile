@@ -232,3 +232,32 @@ trash-transformed-playground-iOS-Blank:
 # iOS Blank : Clean Markdown
 trash-transformed-playground-iOS-Blank-markdown:
     trash "{{markdown_output}}/$(echo {{ios_blank_bowplayground_name}} | tr [A-Z] [a-z])"
+
+# iOS Single View
+
+ios_singleview_playground_dir := "iOS-SingleView.playground"
+ios_singleview_bowplayground_name := "IosSingleView"
+
+# iOS Single View : 1 : Open PlayGround by Xcode
+open-xcode-playground-iOS-SingleView:
+    open "{{xcode_playground}}/{{ios_singleview_playground_dir}}"
+
+# iOS Single View : 2 : Transform PlayGround by nef
+nef-playground-transform-iOS-SingleView:
+    nef playground --playground "{{xcode_playground}}/{{ios_singleview_playground_dir}}" --output "{{transform_bowplayground}}" --name "{{ios_singleview_bowplayground_name}}" --platform ios
+
+# iOS Single View : 3 : Open Transformed PlayGround by Xcode
+open-transformed-playground-iOS-SingleView:
+    open "{{transform_bowplayground}}/{{ios_singleview_bowplayground_name}}.app"
+
+# iOS Single View : 4 : Render Markdown for Transformed PlayGround by nef
+markdown-transformed-playground-iOS-SingleView:
+    nef markdown --project "{{transform_bowplayground}}/{{ios_singleview_bowplayground_name}}.app" --output "{{markdown_output}}"
+
+# iOS Single View : Clean Transformed PlayGround
+trash-transformed-playground-iOS-SingleView:
+    trash "{{transform_bowplayground}}/{{ios_singleview_bowplayground_name}}.app"
+
+# iOS Single View : Clean Markdown
+trash-transformed-playground-iOS-SingleView-markdown:
+    trash "{{markdown_output}}/$(echo {{ios_singleview_bowplayground_name}} | tr [A-Z] [a-z])"
