@@ -236,8 +236,14 @@ open-transformed-playground-iOS-Blank:
 # iOS Blank : 4 : Compile Transformed PlayGround by nef
 compile-transformed-playground-iOS-Blank:
     nef compile --project "{{transform_bowplayground}}/{{ios_blank_bowplayground_name}}.app"
+    du -d 3 -h "{{transform_bowplayground}}/{{ios_blank_bowplayground_name}}.app"
 
-# iOS Blank : 5 : Render Markdown for Transformed PlayGround by nef
+# iOS Blank : 5 : Clean by nef
+clean-transformed-playground-iOS-Blank:
+    nef clean --project "{{transform_bowplayground}}/{{ios_blank_bowplayground_name}}.app"
+    du -d 3 -h "{{transform_bowplayground}}/{{ios_blank_bowplayground_name}}.app"
+
+# iOS Blank : 6 : Render Markdown for Transformed PlayGround by nef
 markdown-transformed-playground-iOS-Blank:
     nef markdown --project "{{transform_bowplayground}}/{{ios_blank_bowplayground_name}}.app" --output "{{markdown_output}}"
 
