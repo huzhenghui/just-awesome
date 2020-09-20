@@ -298,6 +298,10 @@ clean-transformed-playground-iOS-Blank:
 markdown-transformed-playground-iOS-Blank:
     nef markdown --project "{{transform_bowplayground}}/{{ios_blank_bowplayground_name}}.app" --output "{{markdown_output}}"
 
+# iOS Blank : 7 : Render Jekyll for Transformed PlayGround by nef
+jekyll-transformed-playground-iOS-Blank:
+    nef jekyll --project "{{transform_bowplayground}}/{{ios_blank_bowplayground_name}}.app" --output "{{jekyll_output}}/{{ios_blank_bowplayground_name}}"
+
 # iOS Blank : Clean Transformed PlayGround
 trash-transformed-playground-iOS-Blank:
     trash "{{transform_bowplayground}}/{{ios_blank_bowplayground_name}}.app"
@@ -305,6 +309,10 @@ trash-transformed-playground-iOS-Blank:
 # iOS Blank : Clean Markdown
 trash-transformed-playground-iOS-Blank-markdown:
     trash "{{markdown_output}}/$(echo {{ios_blank_bowplayground_name}} | tr [A-Z] [a-z])"
+
+# iOS Blank : clean Jekyll
+trash-transformed-playground-iOS-Blank-jekyll:
+    trash "{{jekyll_output}}/{{ios_blank_bowplayground_name}}"
 
 # iOS Game
 
