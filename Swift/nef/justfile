@@ -140,6 +140,10 @@ clean-transformed-playground-macOS-Blank:
 markdown-transformed-playground-macOS-Blank:
     nef markdown --project "{{transform_bowplayground}}/{{macos_blank_bowplayground_name}}.app" --output "{{markdown_output}}"
 
+# macOS Blank : 7 : Render Jekyll for Transformed PlayGround by nef
+jekyll-transformed-playground-macOS-Blank:
+    nef jekyll --project "{{transform_bowplayground}}/{{macos_blank_bowplayground_name}}.app" --output "{{jekyll_output}}/{{macos_blank_bowplayground_name}}"
+
 # macOS Blank : Clean Transformed PlayGround
 trash-transformed-playground-macOS-Blank:
     trash "{{transform_bowplayground}}/{{macos_blank_bowplayground_name}}.app"
@@ -147,6 +151,10 @@ trash-transformed-playground-macOS-Blank:
 # macOS Blank : Clean Markdown
 trash-transformed-playground-macOS-Blank-markdown:
     trash "{{markdown_output}}/$(echo {{macos_blank_bowplayground_name}} | tr [A-Z] [a-z])"
+
+# macOS Blank : clean Jekyll
+trash-transformed-playground-macOS-Blank-jekyll:
+    trash "{{jekyll_output}}/{{macos_blank_bowplayground_name}}"
 
 # macOS Game
 
