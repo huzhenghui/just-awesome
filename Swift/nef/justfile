@@ -93,6 +93,10 @@ clean-playground-macos:
 markdown-playground-macos:
     nef markdown --project "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app" --output "{{markdown_output}}"
 
+# Create macos : 6 : Generate Jekyll by nef
+jekyll-playground-macos:
+    nef jekyll --project "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app" --output "{{jekyll_output}}/{{macos_bowplayground_name}}"
+
 # Create macos : Clean PlayGround
 trash-playground-macos:
     trash "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app"
@@ -100,6 +104,10 @@ trash-playground-macos:
 # Create macos : Clean Markdown
 trash-playground-macos-markdown:
     trash "{{markdown_output}}/$(echo {{macos_bowplayground_name}} | tr [A-Z] [a-z])"
+
+# Create macos : clean Jekyll
+trash-playground-macos-jekyll:
+    trash "{{jekyll_output}}/{{macos_bowplayground_name}}"
 
 # macOS Blank
 
