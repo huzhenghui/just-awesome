@@ -425,6 +425,10 @@ markdown-transformed-playground-iOS-Map:
 jekyll-transformed-playground-iOS-Map:
     nef jekyll --project "{{transform_bowplayground}}/{{ios_map_bowplayground_name}}.app" --output "{{jekyll_output}}/{{ios_map_bowplayground_name}}"
 
+# iOS Map : 6 : Render Carbon for Transformed PlayGround by nef
+carbon-transformed-playground-iOS-Map:
+    nef carbon --project "{{transform_bowplayground}}/{{ios_map_bowplayground_name}}.app" --output "{{carbon_output}}"
+
 # iOS Map : Clean Transformed PlayGround
 trash-transformed-playground-iOS-Map:
     trash "{{transform_bowplayground}}/{{ios_map_bowplayground_name}}.app"
@@ -436,6 +440,10 @@ trash-transformed-playground-iOS-Map-markdown:
 # iOS Map : clean Jekyll
 trash-transformed-playground-iOS-Map-jekyll:
     trash "{{jekyll_output}}/{{ios_map_bowplayground_name}}"
+
+# iOS Map : clean Carbon
+trash-transformed-playground-iOS-Map-carbon:
+    trash "{{carbon_output}}/$(echo {{ios_map_bowplayground_name}} | tr [A-Z] [a-z])"
 
 # iOS Single View
 
