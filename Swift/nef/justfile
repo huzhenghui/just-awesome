@@ -20,6 +20,7 @@ nef-version:
 
 markdown_output := "./markdown-output"
 jekyll_output := "./jekyll-output"
+carbon_output := "./carbon-output"
 xcode_playground := "./xcode-playground"
 transform_bowplayground := "./Transform-BowPlayground"
 
@@ -144,6 +145,10 @@ markdown-transformed-playground-macOS-Blank:
 jekyll-transformed-playground-macOS-Blank:
     nef jekyll --project "{{transform_bowplayground}}/{{macos_blank_bowplayground_name}}.app" --output "{{jekyll_output}}/{{macos_blank_bowplayground_name}}"
 
+# macOS Blank : 8 : Render Carbon for Transformed PlayGround by nef
+carbon-transformed-playground-macOS-Blank:
+    nef carbon --project "{{transform_bowplayground}}/{{macos_blank_bowplayground_name}}.app" --output "{{carbon_output}}"
+
 # macOS Blank : Clean Transformed PlayGround
 trash-transformed-playground-macOS-Blank:
     trash "{{transform_bowplayground}}/{{macos_blank_bowplayground_name}}.app"
@@ -155,6 +160,10 @@ trash-transformed-playground-macOS-Blank-markdown:
 # macOS Blank : clean Jekyll
 trash-transformed-playground-macOS-Blank-jekyll:
     trash "{{jekyll_output}}/{{macos_blank_bowplayground_name}}"
+
+# macOS Blank : clean Carbon
+trash-transformed-playground-macOS-Blank-carbon:
+    trash "{{carbon_output}}/$(echo {{macos_blank_bowplayground_name}} | tr [A-Z] [a-z])"
 
 # macOS Game
 
