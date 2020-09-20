@@ -19,6 +19,7 @@ nef-version:
     nef version
 
 markdown_output := "./markdown-output"
+jekyll_output := "./jekyll-output"
 xcode_playground := "./xcode-playground"
 transform_bowplayground := "./Transform-BowPlayground"
 
@@ -49,6 +50,10 @@ clean-playground-ios:
 markdown-playground-ios:
     nef markdown --project "{{ios_bowplayground_dir}}/{{ios_bowplayground_name}}.app" --output "{{markdown_output}}"
 
+# Create ios : 6 : Generate Jekyll by nef
+jekyll-playground-ios:
+    nef jekyll --project "{{ios_bowplayground_dir}}/{{ios_bowplayground_name}}.app" --output "{{jekyll_output}}/{{ios_bowplayground_name}}"
+
 # Create ios : clean PlayGround
 trash-playground-ios:
     trash "{{ios_bowplayground_dir}}/{{ios_bowplayground_name}}.app"
@@ -56,6 +61,10 @@ trash-playground-ios:
 # Create ios : clean Markdown
 trash-playground-ios-markdown:
     trash "{{markdown_output}}/$(echo {{ios_bowplayground_name}} | tr [A-Z] [a-z])"
+
+# Create ios : clean Jekyll
+trash-playground-ios-jekyll:
+    trash "{{jekyll_output}}/{{ios_bowplayground_name}}"
 
 # Create macos
 
