@@ -38,10 +38,12 @@ open-playground-ios:
 # Create ios : 3 : Compile by nef
 compile-playground-ios:
     nef compile --project "{{ios_bowplayground_dir}}/{{ios_bowplayground_name}}.app"
+    du -d 3 -h "{{ios_bowplayground_dir}}/{{ios_bowplayground_name}}.app"
 
 # Create ios : 4 : Clean by nef
 clean-playground-ios:
     nef clean --project "{{ios_bowplayground_dir}}/{{ios_bowplayground_name}}.app"
+    du -d 3 -h "{{ios_bowplayground_dir}}/{{ios_bowplayground_name}}.app"
 
 # Create ios : 5 : Generate Markdown by nef
 markdown-playground-ios:
