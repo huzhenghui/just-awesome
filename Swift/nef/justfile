@@ -343,3 +343,17 @@ trash-transformed-playground-iOS-SingleView:
 # iOS Single View : Clean Markdown
 trash-transformed-playground-iOS-SingleView-markdown:
     trash "{{markdown_output}}/$(echo {{ios_singleview_bowplayground_name}} | tr [A-Z] [a-z])"
+
+# PlayGround Book
+
+# PlayGround Book : 1 : Create by nef
+nef-ipad:
+    nef ipad --name "PlayGroundBookName" --package "./ipad-package-description/Package.swift" --output "./ipad-output"
+
+# PlayGround Book : 2 : Open
+open-playground-book:
+    open "./ipad-output/PlayGroundBookName/PlayGroundBookName.playgroundbook"
+
+# PlayGround Book : Clean PlayGround Book
+trash-playground-book:
+    trash "./ipad-output/PlayGroundBookName/"
