@@ -233,6 +233,35 @@ trash-transformed-playground-iOS-Blank:
 trash-transformed-playground-iOS-Blank-markdown:
     trash "{{markdown_output}}/$(echo {{ios_blank_bowplayground_name}} | tr [A-Z] [a-z])"
 
+# iOS Game
+
+ios_game_playground_dir := "iOS-Game.playground"
+ios_game_bowplayground_name := "IosGame"
+
+# iOS Game : 1 : Open PlayGround by Xcode
+open-xcode-playground-iOS-Game:
+    open "{{xcode_playground}}/{{ios_game_playground_dir}}"
+
+# iOS Game : 2 : Transform PlayGround by nef
+nef-playground-transform-iOS-Game:
+    nef playground --playground "{{xcode_playground}}/{{ios_game_playground_dir}}" --output "{{transform_bowplayground}}" --name "{{ios_game_bowplayground_name}}" --platform ios
+
+# iOS Game : 3 : Open Transformed PlayGround by Xcode
+open-transformed-playground-iOS-Game:
+    open "{{transform_bowplayground}}/{{ios_game_bowplayground_name}}.app"
+
+# iOS Game : 4 : Render Markdown for Transformed PlayGround by nef
+markdown-transformed-playground-iOS-Game:
+    nef markdown --project "{{transform_bowplayground}}/{{ios_game_bowplayground_name}}.app" --output "{{markdown_output}}"
+
+# iOS Game : Clean Transformed PlayGround
+trash-transformed-playground-iOS-Game:
+    trash "{{transform_bowplayground}}/{{ios_game_bowplayground_name}}.app"
+
+# iOS Game : Clean Markdown
+trash-transformed-playground-iOS-Game-markdown:
+    trash "{{markdown_output}}/$(echo {{ios_game_bowplayground_name}} | tr [A-Z] [a-z])"
+
 # iOS Map
 
 ios_map_playground_dir := "iOS-Map.playground"
