@@ -251,6 +251,10 @@ open-transformed-playground-macOS-SingleView:
 markdown-transformed-playground-macOS-SingleView:
     nef markdown --project "{{transform_bowplayground}}/{{macos_singleview_bowplayground_name}}.app" --output "{{markdown_output}}"
 
+# macOS Single View : 5 : Render Jekyll for Transformed PlayGround by nef
+jekyll-transformed-playground-macOS-SingleView:
+    nef jekyll --project "{{transform_bowplayground}}/{{macos_singleview_bowplayground_name}}.app" --output "{{jekyll_output}}/{{macos_singleview_bowplayground_name}}"
+
 # macOS Single View : Clean Transformed PlayGround
 trash-transformed-playground-macOS-SingleView:
     trash "{{transform_bowplayground}}/{{macos_singleview_bowplayground_name}}.app"
@@ -258,6 +262,10 @@ trash-transformed-playground-macOS-SingleView:
 # macOS Single View : Clean Markdown
 trash-transformed-playground-macOS-SingleView-markdown:
     trash "{{markdown_output}}/$(echo {{macos_singleview_bowplayground_name}} | tr [A-Z] [a-z])"
+
+# macOS Single View : clean Jekyll
+trash-transformed-playground-macOS-SingleView-jekyll:
+    trash "{{jekyll_output}}/{{macos_singleview_bowplayground_name}}"
 
 # iOS Blank
 
