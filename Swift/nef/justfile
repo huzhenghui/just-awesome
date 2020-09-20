@@ -24,6 +24,17 @@ carbon_output := "./carbon-output"
 xcode_playground := "./xcode-playground"
 transform_bowplayground := "./Transform-BowPlayground"
 
+# Source Code
+
+source-code-get:
+    ghq get --update https://github.com/bow-swift/nef
+
+source-code-compile-documentation: source-code-get
+    cd "$(ghq list --full-path https://github.com/bow-swift/nef)" && nef compile --project ./Documentation.app --use-cache
+
+source-code-open-documentation: source-code-compile-documentation
+    cd "$(ghq list --full-path https://github.com/bow-swift/nef)" && open ./Documentation.app
+
 # Create ios
 
 ios_bowplayground_dir := "./ios-BowPlayground"
