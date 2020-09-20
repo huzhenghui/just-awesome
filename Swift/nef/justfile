@@ -98,6 +98,10 @@ markdown-playground-macos:
 jekyll-playground-macos:
     nef jekyll --project "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app" --output "{{jekyll_output}}/{{macos_bowplayground_name}}"
 
+# Create macos : 7 : Render Carbon for Created PlayGround by nef
+carbon-playground-macos:
+    nef carbon --project "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app" --output "{{carbon_output}}"
+
 # Create macos : Clean PlayGround
 trash-playground-macos:
     trash "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app"
@@ -109,6 +113,10 @@ trash-playground-macos-markdown:
 # Create macos : clean Jekyll
 trash-playground-macos-jekyll:
     trash "{{jekyll_output}}/{{macos_bowplayground_name}}"
+
+# Create macos : clean Carbon
+trash-playground-macos-carbon:
+    trash "{{carbon_output}}/$(echo {{macos_bowplayground_name}} | tr [A-Z] [a-z])"
 
 # macOS Blank
 
