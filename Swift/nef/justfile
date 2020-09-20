@@ -470,6 +470,10 @@ markdown-transformed-playground-iOS-SingleView:
 jekyll-transformed-playground-iOS-SingleView:
     nef jekyll --project "{{transform_bowplayground}}/{{ios_singleview_bowplayground_name}}.app" --output "{{jekyll_output}}/{{ios_singleview_bowplayground_name}}"
 
+# iOS Single View : 6 : Render Carbon for Transformed PlayGround by nef
+carbon-transformed-playground-iOS-SingleView:
+    nef carbon --project "{{transform_bowplayground}}/{{ios_singleview_bowplayground_name}}.app" --output "{{carbon_output}}"
+
 # iOS Single View : Clean Transformed PlayGround
 trash-transformed-playground-iOS-SingleView:
     trash "{{transform_bowplayground}}/{{ios_singleview_bowplayground_name}}.app"
@@ -481,6 +485,10 @@ trash-transformed-playground-iOS-SingleView-markdown:
 # iOS Single View  : clean Jekyll
 trash-transformed-playground-iOS-SingleView-jekyll:
     trash "{{jekyll_output}}/{{ios_singleview_bowplayground_name}}"
+
+# iOS Single View : clean Carbon
+trash-transformed-playground-iOS-SingleView-carbon:
+    trash "{{carbon_output}}/$(echo {{ios_singleview_bowplayground_name}} | tr [A-Z] [a-z])"
 
 # PlayGround Book
 
