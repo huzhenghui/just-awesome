@@ -106,9 +106,38 @@ compile-playground-ios-podfile:
     nef compile --project "{{ios_bowplayground_dir}}/{{ios_podfile_name}}.app"
     du -d 3 -h "{{ios_bowplayground_dir}}/{{ios_podfile_name}}.app"
 
+# Create ios by Podfile : 4 : Clean by nef
+clean-playground-ios-podfile:
+    nef clean --project "{{ios_bowplayground_dir}}/{{ios_podfile_name}}.app"
+    du -d 3 -h "{{ios_bowplayground_dir}}/{{ios_podfile_name}}.app"
+
+# Create ios by Podfile : 5 : Generate Markdown by nef
+markdown-playground-ios-podfile:
+    nef markdown --project "{{ios_bowplayground_dir}}/{{ios_podfile_name}}.app" --output "{{markdown_output}}"
+
+# Create ios by Podfile : 6 : Generate Jekyll by nef
+jekyll-playground-ios-podfile:
+    nef jekyll --project "{{ios_bowplayground_dir}}/{{ios_podfile_name}}.app" --output "{{jekyll_output}}/{{ios_podfile_name}}"
+
+# Create ios by Podfile : 7 : Render Carbon for Created PlayGround by nef
+carbon-playground-ios-podfile:
+    nef carbon --project "{{ios_bowplayground_dir}}/{{ios_podfile_name}}.app" --output "{{carbon_output}}"
+
 # Create ios by Podfile : clean PlayGround
 trash-playground-ios-podfile:
     trash "{{ios_bowplayground_dir}}/{{ios_podfile_name}}.app"
+
+# Create ios by Podfile : clean Markdown
+trash-playground-ios-podfile-markdown:
+    trash "{{markdown_output}}/$(echo {{ios_podfile_name}} | tr [A-Z] [a-z])"
+
+# Create ios by Podfile : clean Jekyll
+trash-playground-ios-podfile-jekyll:
+    trash "{{jekyll_output}}/{{ios_podfile_name}}"
+
+# Create ios by Podfile : clean Carbon
+trash-playground-ios-podfile-carbon:
+    trash "{{carbon_output}}/$(echo {{ios_podfile_name}} | tr [A-Z] [a-z])"
 
 # Create macos vanilla
 
