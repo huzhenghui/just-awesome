@@ -18,11 +18,12 @@ nef-help:
 nef-version:
     nef version
 
+macos_bowplayground_dir := "./macos-BowPlayground"
+xcode_playground := "./xcode-playground"
+transform_bowplayground := "./Transform-BowPlayground"
 markdown_output := "./markdown-output"
 jekyll_output := "./jekyll-output"
 carbon_output := "./carbon-output"
-xcode_playground := "./xcode-playground"
-transform_bowplayground := "./Transform-BowPlayground"
 
 # Source Code
 
@@ -86,56 +87,55 @@ trash-playground-ios-jekyll:
 trash-playground-ios-carbon:
     trash "{{carbon_output}}/$(echo {{ios_bowplayground_name}} | tr [A-Z] [a-z])"
 
-# Create macos
+# Create macos vanilla
 
-macos_bowplayground_dir := "./macos-BowPlayground"
-macos_bowplayground_name := "MacosBowPlayground"
+macos_vanilla_name := "MacosVanilla"
 
-# Create macos : 1 : Create by nef
-nef-playground-macos:
-    nef playground --output "{{macos_bowplayground_dir}}" --name "{{macos_bowplayground_name}}" --platform macos
+# Create macos vanilla : 1 : Create by nef
+nef-playground-macos-vanilla:
+    nef playground --output "{{macos_bowplayground_dir}}" --name "{{macos_vanilla_name}}" --platform macos
 
 # Create macos : 2 : Open by Xcode
-open-playground-macos:
-    open "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app"
+open-playground-macos-vanilla:
+    open "{{macos_bowplayground_dir}}/{{macos_vanilla_name}}.app"
 
 # Create macos : 3 : Compile by nef
-compile-playground-macos:
-    nef compile --project "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app"
-    du -d 3 -h "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app"
+compile-playground-macos-vanilla:
+    nef compile --project "{{macos_bowplayground_dir}}/{{macos_vanilla_name}}.app"
+    du -d 3 -h "{{macos_bowplayground_dir}}/{{macos_vanilla_name}}.app"
 
 # Create macos : 4 : Clean by nef
-clean-playground-macos:
-    nef clean --project "{{ios_bowplayground_dir}}/{{macos_bowplayground_name}}.app"
-    du -d 3 -h "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app"
+clean-playground-macos-vanilla:
+    nef clean --project "{{ios_bowplayground_dir}}/{{macos_vanilla_name}}.app"
+    du -d 3 -h "{{macos_bowplayground_dir}}/{{macos_vanilla_name}}.app"
 
 # Create macos : 5 : Generate Markdown by nef
-markdown-playground-macos:
-    nef markdown --project "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app" --output "{{markdown_output}}"
+markdown-playground-macos-vanilla:
+    nef markdown --project "{{macos_bowplayground_dir}}/{{macos_vanilla_name}}.app" --output "{{markdown_output}}"
 
 # Create macos : 6 : Generate Jekyll by nef
-jekyll-playground-macos:
-    nef jekyll --project "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app" --output "{{jekyll_output}}/{{macos_bowplayground_name}}"
+jekyll-playground-macos-vanilla:
+    nef jekyll --project "{{macos_bowplayground_dir}}/{{macos_vanilla_name}}.app" --output "{{jekyll_output}}/{{macos_vanilla_name}}"
 
 # Create macos : 7 : Render Carbon for Created PlayGround by nef
-carbon-playground-macos:
-    nef carbon --project "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app" --output "{{carbon_output}}"
+carbon-playground-macos-vanilla:
+    nef carbon --project "{{macos_bowplayground_dir}}/{{macos_vanilla_name}}.app" --output "{{carbon_output}}"
 
 # Create macos : Clean PlayGround
-trash-playground-macos:
-    trash "{{macos_bowplayground_dir}}/{{macos_bowplayground_name}}.app"
+trash-playground-macos-vanilla:
+    trash "{{macos_bowplayground_dir}}/{{macos_vanilla_name}}.app"
 
 # Create macos : Clean Markdown
-trash-playground-macos-markdown:
-    trash "{{markdown_output}}/$(echo {{macos_bowplayground_name}} | tr [A-Z] [a-z])"
+trash-playground-macos-vanilla-markdown:
+    trash "{{markdown_output}}/$(echo {{macos_vanilla_name}} | tr [A-Z] [a-z])"
 
 # Create macos : clean Jekyll
-trash-playground-macos-jekyll:
-    trash "{{jekyll_output}}/{{macos_bowplayground_name}}"
+trash-playground-macos-vanilla-jekyll:
+    trash "{{jekyll_output}}/{{macos_vanilla_name}}"
 
 # Create macos : clean Carbon
-trash-playground-macos-carbon:
-    trash "{{carbon_output}}/$(echo {{macos_bowplayground_name}} | tr [A-Z] [a-z])"
+trash-playground-macos-vanilla-carbon:
+    trash "{{carbon_output}}/$(echo {{macos_vanilla_name}} | tr [A-Z] [a-z])"
 
 # macOS Blank
 
