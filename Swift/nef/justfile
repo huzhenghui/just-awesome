@@ -87,6 +87,29 @@ trash-playground-ios-vanilla-jekyll:
 trash-playground-ios-vanilla-carbon:
     trash "{{carbon_output}}/$(echo {{ios_vanilla_name}} | tr [A-Z] [a-z])"
 
+# Create ios by Podfile
+
+ios_podfile_dir := "./Podfiles/ios"
+ios_podfile_name := "IosPodfile"
+
+# Create ios by Podfile : 1 : Create by nef
+nef-playground-ios-podfile:
+    nef playground --output "{{ios_bowplayground_dir}}" --name "{{ios_podfile_name}}" --platform ios --podfile "{{ios_podfile_dir}}/Podfile"
+    cp "{{ios_podfile_dir}}/Contents.swift" "{{ios_bowplayground_dir}}/{{ios_podfile_name}}.app/Contents/MacOS/IosPodfile.playground/Pages/page.xcplaygroundpage/Contents.swift"
+
+# Create ios by Podfile : 2 : Open by Xcode
+open-playground-ios-podfile:
+    open "{{ios_bowplayground_dir}}/{{ios_podfile_name}}.app"
+
+# Create ios by Podfile : 3 : Compile by nef
+compile-playground-ios-podfile:
+    nef compile --project "{{ios_bowplayground_dir}}/{{ios_podfile_name}}.app"
+    du -d 3 -h "{{ios_bowplayground_dir}}/{{ios_podfile_name}}.app"
+
+# Create ios by Podfile : clean PlayGround
+trash-playground-ios-podfile:
+    trash "{{ios_bowplayground_dir}}/{{ios_podfile_name}}.app"
+
 # Create macos vanilla
 
 macos_vanilla_name := "MacosVanilla"
@@ -139,12 +162,13 @@ trash-playground-macos-vanilla-carbon:
 
 # Create macos by Podfile
 
+macos_podfile_dir := "./Podfiles/macos"
 macos_podfile_name := "MacosPodfile"
 
 # Create macos by Podfile : 1 : Create by nef
 nef-playground-macos-podfile:
-    nef playground --output "{{macos_bowplayground_dir}}" --name "{{macos_podfile_name}}" --platform macos --podfile "./Podfiles/Podfile"
-    cp "./Podfiles/Contents.swift" "{{macos_bowplayground_dir}}/{{macos_podfile_name}}.app/Contents/MacOS/MacosPodfile.playground/Pages/page.xcplaygroundpage/Contents.swift"
+    nef playground --output "{{macos_bowplayground_dir}}" --name "{{macos_podfile_name}}" --platform macos --podfile "{{macos_podfile_dir}}/Podfile"
+    cp "{{macos_podfile_dir}}/Contents.swift" "{{macos_bowplayground_dir}}/{{macos_podfile_name}}.app/Contents/MacOS/MacosPodfile.playground/Pages/page.xcplaygroundpage/Contents.swift"
 
 # Create macos by Podfile : 2 : Open by Xcode
 open-playground-macos-podfile:

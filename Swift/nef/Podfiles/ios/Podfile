@@ -1,0 +1,7 @@
+target 'IosPodfile' do
+    platform :ios, '10.0'
+    use_frameworks!
+ 
+    pod 'Bow', '~> 0.8.0'
+    pod 'RxSwift'
+  end
