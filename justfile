@@ -9,10 +9,20 @@ just-choose:
 just-list:
     just --list
 
-root := `pwd`
+root_dir := `pwd`
+draft_dir := `jump cd just-draft`
+code_workspace := root_dir + '/just.code-workspace'
 
 just-evaluate:
     just --evaluate
 
+
+just-draft-dir:
+    echo "{{draft_dir}}"
+
 code:
-    code "{{root}}"
+    if [ -f '{{code_workspace}}' ]; then \
+        code '{{code_workspace}}'; \
+    else \
+        code '{{root_dir}}'; \
+    fi
