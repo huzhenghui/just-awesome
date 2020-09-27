@@ -16,7 +16,6 @@ code_workspace := root_dir + '/just.code-workspace'
 just-evaluate:
     just --evaluate
 
-
 just-draft-dir:
     echo "{{draft_dir}}"
 
