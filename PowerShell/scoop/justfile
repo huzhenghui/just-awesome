@@ -14,3 +14,12 @@ do-while-install-rust:
     Write-Host "${n}" ; \
     } \
     while ( ! $n )
+
+pwsh-processes:
+    Get-CimInstance -ClassName Win32_Process -Filter 'Name = "pwsh.exe"'
+
+pwsh-processes-commandline:
+    Get-CimInstance -ClassName Win32_Process -Filter 'Name = "pwsh.exe"' | Select-Object CommandLine
+
+pwsh-processes-commandline-scoop:
+    Get-CimInstance -ClassName Win32_Process -Filter 'Name = "pwsh.exe" and CommandLine LIKE "%scoop%"' | Select-Object CommandLine
