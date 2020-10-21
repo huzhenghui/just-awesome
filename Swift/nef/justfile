@@ -331,51 +331,6 @@ trash-transformed-playground-macOS-SingleView-jekyll:
 trash-transformed-playground-macOS-SingleView-carbon:
     trash "{{carbon_output}}/$(echo {{macos_singleview_bowplayground_name}} | tr [A-Z] [a-z])"
 
-# iOS Single View
-
-ios_singleview_playground_dir := "iOS-SingleView.playground"
-ios_singleview_bowplayground_name := "IosSingleView"
-
-# iOS Single View : 1 : Open PlayGround by Xcode
-open-xcode-playground-iOS-SingleView:
-    open "{{xcode_playground}}/{{ios_singleview_playground_dir}}"
-
-# iOS Single View : 2 : Transform PlayGround by nef
-nef-playground-transform-iOS-SingleView:
-    nef playground --playground "{{xcode_playground}}/{{ios_singleview_playground_dir}}" --output "{{transform_bowplayground}}" --name "{{ios_singleview_bowplayground_name}}" --platform ios
-
-# iOS Single View : 3 : Open Transformed PlayGround by Xcode
-open-transformed-playground-iOS-SingleView:
-    open "{{transform_bowplayground}}/{{ios_singleview_bowplayground_name}}.app"
-
-# iOS Single View : 4 : Render Markdown for Transformed PlayGround by nef
-markdown-transformed-playground-iOS-SingleView:
-    nef markdown --project "{{transform_bowplayground}}/{{ios_singleview_bowplayground_name}}.app" --output "{{markdown_output}}"
-
-# iOS Single View : 5 : Render Jekyll for Transformed PlayGround by nef
-jekyll-transformed-playground-iOS-SingleView:
-    nef jekyll --project "{{transform_bowplayground}}/{{ios_singleview_bowplayground_name}}.app" --output "{{jekyll_output}}/{{ios_singleview_bowplayground_name}}"
-
-# iOS Single View : 6 : Render Carbon for Transformed PlayGround by nef
-carbon-transformed-playground-iOS-SingleView:
-    nef carbon --project "{{transform_bowplayground}}/{{ios_singleview_bowplayground_name}}.app" --output "{{carbon_output}}"
-
-# iOS Single View : Clean Transformed PlayGround
-trash-transformed-playground-iOS-SingleView:
-    trash "{{transform_bowplayground}}/{{ios_singleview_bowplayground_name}}.app"
-
-# iOS Single View : Clean Markdown
-trash-transformed-playground-iOS-SingleView-markdown:
-    trash "{{markdown_output}}/$(echo {{ios_singleview_bowplayground_name}} | tr [A-Z] [a-z])"
-
-# iOS Single View  : clean Jekyll
-trash-transformed-playground-iOS-SingleView-jekyll:
-    trash "{{jekyll_output}}/{{ios_singleview_bowplayground_name}}"
-
-# iOS Single View : clean Carbon
-trash-transformed-playground-iOS-SingleView-carbon:
-    trash "{{carbon_output}}/$(echo {{ios_singleview_bowplayground_name}} | tr [A-Z] [a-z])"
-
 # PlayGround Book
 
 # PlayGround Book : 1 : Create by nef
