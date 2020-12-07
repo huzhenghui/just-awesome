@@ -25,3 +25,6 @@ code:
     else \
         code '{{root_dir}}'; \
     fi
+
+jump-pins:
+    jump pins | sort
