@@ -1,0 +1,22 @@
+#!/usr/bin/env just --justfile
+
+_:
+    # /Users/huzhenghui/ghq/github.com/huzhenghui/just-awesome/HOST
+    echo "${PWD}"
+
+    # /Users/huzhenghui/ghq/github.com/huzhenghui/just-awesome/HOST
+    direnv exec "${PWD}" pwd
+
+    # -/Users/huzhenghui/ghq/github.com/huzhenghui/just-awesome
+    direnv exec "${PWD}" printenv DIRENV_DIR
+
+    #
+    echo "{{justfile_directory()}}"
+
+    # /Users/huzhenghui/ghq/github.com/huzhenghui/just-awesome/HOST
+    direnv exec "{{justfile_directory()}}" pwd
+
+    #
+    direnv exec "{{justfile_directory()}}" printenv DIRENV_DIR
+    
+    echo HOST_IP="${HOST_IP}"
