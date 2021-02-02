@@ -1,0 +1,20 @@
+#!/usr/bin/env just --justfile
+
+tempfifo :=`mktemp` + '.pipe'
+
+_:
+    echo "{{ justfile() }}"
+    echo "${gocryptfs_Keychain_service}"
+    echo "${gocryptfs_Keychain_account}"
+    echo "{{ tempfifo }}"
+    mkfifo "{{ tempfifo }}"
+    ghq get --update https://github.com/huzhenghui/Keychain-Generic-Password
+    just --working-directory "$(ghq list --full-path https://github.com/huzhenghui/Keychain-Generic-Password)" --justfile "{{ justfile() }}" --set tempfifo "{{ tempfifo }}" get &
+    cat "{{ tempfifo }}"
+
+get:
+    pwd
+    echo "${gocryptfs_Keychain_service}"
+    echo "${gocryptfs_Keychain_account}"
+    mask git --service "${gocryptfs_Keychain_service}" --account "${gocryptfs_Keychain_account}"
+    mask get --service "${gocryptfs_Keychain_service}" --account "${gocryptfs_Keychain_account}" > "{{ tempfifo }}"

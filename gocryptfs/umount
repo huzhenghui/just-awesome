@@ -1,0 +1,11 @@
+#!/usr/bin/env just --justfile
+
+_:
+    echo "${gocryptfs_MOUNTPOINT}"
+    if df -l "${gocryptfs_MOUNTPOINT}" ; then \
+        : ; \
+    else \
+        if df -T macfuse "${gocryptfs_MOUNTPOINT}" ; then \
+            umount "${gocryptfs_MOUNTPOINT}" ; \
+        fi ; \
+    fi ;

@@ -1,0 +1,28 @@
+#!/usr/bin/env just --justfile
+
+Keychain-directory := `until ghq list --full-path https://github.com/huzhenghui/Keychain-Generic-Password; do : ; done;`
+
+tempfifo :=`mktemp` + '.pipe'
+
+_:
+    echo "{{ justfile() }}"
+    echo "${gocryptfs_MOUNTPOINT}"
+    mkdir -p "${gocryptfs_MOUNTPOINT}"
+    if df -l "${gocryptfs_MOUNTPOINT}" ; then \
+        just  --justfile "{{ justfile() }}" mount ; \
+    fi ;
+
+mount:
+    echo "{{ justfile() }}"
+    echo "${gocryptfs_Keychain_service}"
+    echo "${gocryptfs_Keychain_account}"
+    echo "${gocryptfs_CIPHERDIR}"
+    echo "${gocryptfs_MOUNTPOINT}"
+    echo "{{ Keychain-directory }}"
+    echo "{{ tempfifo }}"
+    mkfifo "{{ tempfifo }}"
+    just --working-directory "{{ Keychain-directory }}" --justfile "{{ justfile() }}" --set tempfifo "{{ tempfifo }}" get &
+    gocryptfs -passfile "{{ tempfifo }}" "${gocryptfs_CIPHERDIR}" "${gocryptfs_MOUNTPOINT}"
+
+get:
+    mask get --service "${gocryptfs_Keychain_service}" --account "${gocryptfs_Keychain_account}" > "{{ tempfifo }}"
