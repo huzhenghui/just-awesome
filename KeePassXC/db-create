@@ -1,0 +1,24 @@
+#!/usr/bin/env just --justfile
+
+Keychain-Directory := `r=""; until [[ -n "${r}" ]] ; do r=$(ghq list --full-path https://github.com/huzhenghui/Keychain-Generic-Password); done; echo "${r}"`
+
+tempfifo :=`mktemp` + '.pipe'
+
+_:
+    echo "{{ justfile() }}"
+    echo "${KeePassXC_Database_Dir}"
+    echo "${KeyPassXC_Database_Name}"
+    echo "${KeyPassXC_Keychain_Service}"
+    echo "${KeyPassXC_Keychain_Account}"
+    echo "{{ Keychain-Directory }}"
+    echo "{{ tempfifo }}"
+    mkfifo "{{ tempfifo }}"
+    just --working-directory "{{ Keychain-Directory }}" --justfile "{{ justfile() }}" --set tempfifo "{{ tempfifo }}" get &
+    keepassxc-cli db-create --quiet --set-password --set-key-file "${KeePassXC_Database_Dir}/${KeyPassXC_Database_Name}.key" "${KeePassXC_Database_Dir}/${KeyPassXC_Database_Name}.kdbx" < "{{ tempfifo }}"
+
+get:
+    echo "${KeyPassXC_Keychain_Service}"
+    echo "${KeyPassXC_Keychain_Account}"
+    echo "{{ tempfifo }}"
+    master="$(mask get --service "${KeyPassXC_Keychain_Service}" --account "${KeyPassXC_Keychain_Account}")" && \
+    echo "${master}\n${master}" > "{{ tempfifo }}"

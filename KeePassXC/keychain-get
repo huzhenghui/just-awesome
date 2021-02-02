@@ -1,0 +1,19 @@
+#!/usr/bin/env just --justfile
+
+_:
+    echo "{{ justfile() }}"
+    echo "${KeyPassXC_Keychain_Service}"
+    echo "${KeyPassXC_Keychain_Account}"
+    ghq get --update https://github.com/huzhenghui/Keychain-Generic-Password
+    r=""; \
+    until [[ -n "${r}" ]] ; \
+        do r=$(ghq list --full-path https://github.com/huzhenghui/Keychain-Generic-Password); \
+    done; \
+    just --working-directory "${r}" --justfile "{{ justfile() }}" get
+
+get:
+    pwd
+    echo "${KeyPassXC_Keychain_Service}"
+    echo "${KeyPassXC_Keychain_Account}"
+    mask git --service "${KeyPassXC_Keychain_Service}" --account "${KeyPassXC_Keychain_Account}"
+    mask get --service "${KeyPassXC_Keychain_Service}" --account "${KeyPassXC_Keychain_Account}"
