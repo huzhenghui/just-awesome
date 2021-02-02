@@ -1,6 +1,6 @@
 #!/usr/bin/env just --justfile
 
-Keychain-directory := `until ghq list --full-path https://github.com/huzhenghui/Keychain-Generic-Password; do : ; done;`
+Keychain-directory := `until ghq list --full-path https://github.com/huzhenghui/Keychain-Generic-Password ; do : ; done;`
 
 tempfifo :=`mktemp` + '.pipe'
 

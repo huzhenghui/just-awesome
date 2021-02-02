@@ -1,0 +1,17 @@
+#!/usr/bin/env just --justfile
+
+_:
+    echo "{{ justfile() }}"
+    echo "{{ justfile_directory() }}"
+    echo "${HOST_IP}"
+    echo "${gocryptfs_MOUNTPOINT}"
+    "{{ justfile_directory() }}/gocryptfs/mount"
+    mkdir -p "${gocryptfs_MOUNTPOINT}/config"
+    scp "root@${HOST_IP}:/root/.config/pueue/pueue.yml" "${gocryptfs_MOUNTPOINT}/config"
+    mkdir -p "${gocryptfs_MOUNTPOINT}/share/certs"
+    scp "root@${HOST_IP}:/root/.local/share/pueue/certs/daemon.cert" "${gocryptfs_MOUNTPOINT}/share/certs"
+    scp "root@${HOST_IP}:/root/.local/share/pueue/shared_secret" "${gocryptfs_MOUNTPOINT}/share"
+    daemon_cert="${gocryptfs_MOUNTPOINT}/share/certs/daemon.cert" \
+        shared_secret_path="${gocryptfs_MOUNTPOINT}/share/shared_secret" \
+        yq eval --inplace '(.client.read_local_logs = false) | (.shared.port = env(pueued_shared_port)) | (.shared.daemon_cert = env(daemon_cert)) | (.shared.shared_secret_path = env(shared_secret_path))' \
+        "${gocryptfs_MOUNTPOINT}/config/pueue.yml"

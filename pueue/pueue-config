@@ -1,0 +1,16 @@
+#!/usr/bin/env just --justfile
+
+
+_ *ARGS:
+    echo "{{ justfile() }}"
+    echo "{{ justfile_directory() }}"
+    echo "{{ ARGS }}"
+    echo "{{ env_var('gocryptfs_MOUNTPOINT') }}"
+    "{{ justfile_directory() }}/gocryptfs/mount"
+    cd / && env -i -P/usr/local/bin pueue --config "{{ env_var('gocryptfs_MOUNTPOINT') }}/config/pueue.yml" {{ ARGS }}
+
+add *ARGS: (_ "add" "--immediate" ARGS)
+
+log *ARGS: (_ "log" ARGS)
+
+status *ARGS: (_ "status" ARGS)
