@@ -1,0 +1,7 @@
+#!/usr/bin/env just --justfile
+
+_:
+    secrets=($(cmdshelf run SERVER1/pueue/pueue/KeePassXC/show Password frps_token pueued_shared)) && \
+    export FRPS_TOKEN="${secrets[0]}" && \
+    export PUEUED_SHARED="${secrets[1]}" && \
+    frpc
